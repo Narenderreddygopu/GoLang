@@ -5,6 +5,8 @@ import (
 )
 
 func main() {
+
+	var total_students_count int = 4
 	var student1 string = "Narender" //type is string
 	var student2 string = "Ramya"    //type is inferred
 	var student3 string = "Uthej"
@@ -16,4 +18,7 @@ func main() {
 	fmt.Println(student3)
 	fmt.Println(student4)
 	fmt.Println(x)
+	/*output*/
+	fmt.Println("total_students_count", total_students_count)
+
 }
