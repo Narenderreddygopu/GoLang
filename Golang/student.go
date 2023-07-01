@@ -17,7 +17,7 @@ func main() {
 	x := 4 //type is inferred
 	elapsed := time.Since(start_time)
 	fmt.Print("Enter narender1 marks: ")
-	fmt.Scanf("%d", &narender)
+	fmt.Scanln(&narender)
 
 	fmt.Print("Enter student2 marks: ")
 	fmt.Scanln(&student2)
