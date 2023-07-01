@@ -8,9 +8,7 @@ import (
 func main() {
 	var start_time = time.Now()
 	var total_students_count int = 4
-
 	var narender int
-
 	var student2 int
 	var student3 int
 	var student4 int
@@ -18,8 +16,8 @@ func main() {
 	var sum_of_marks int
 	x := 4 //type is inferred
 	elapsed := time.Since(start_time)
-	fmt.Print("Enter narender marks: ")
-	fmt.Scanln(&narender)
+	fmt.Print("Enter narender1 marks: ")
+	fmt.Scanf("%d", &narender)
 
 	fmt.Print("Enter student2 marks: ")
 	fmt.Scanln(&student2)
