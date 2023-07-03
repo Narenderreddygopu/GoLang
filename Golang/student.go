@@ -7,7 +7,7 @@ import (
 
 func main() {
 	var start_time = time.Now()
-	var array1 = [5]int{};
+	var array1 = [5]int{}
 	// var total_students_count int = 4
 	// var narender int
 	// var student2 int
@@ -16,7 +16,7 @@ func main() {
 	var avg_marks int
 	var sum_of_marks int
 	// x := 4 //type is inferred
-	elapsed := time.Since(start_time)
+
 	// fmt.Print("Enter narender1 marks: ")
 	// fmt.Scanln(&narender)
 
@@ -29,15 +29,15 @@ func main() {
 	// fmt.Print("Enter student4 marks: ")
 	// fmt.Scanln(&student4)
 
-	for i:=1;i<5;i++ {
-		fmt.Print("Enter Student",i," marks: ")
+	for i := 1; i < 5; i++ {
+		fmt.Print("Enter Student", i, " marks: ")
 		fmt.Scanln(&array1[i])
 		sum_of_marks = sum_of_marks + array1[i]
 	}
 
 	// sum_of_marks = (narender + student2 + student3 + student4)
 	avg_marks = (sum_of_marks) / 4
-
+	elapsed := time.Since(start_time)
 	// fmt.Println(narender)
 	// fmt.Println(student2)
 	// fmt.Println(student3)
