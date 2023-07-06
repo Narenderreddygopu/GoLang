@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"regexp"
 	"time"
 )
 
@@ -88,6 +89,8 @@ func StudentWork() {
 	}
 }
 
+var emailRegex = regexp.MustCompile("^[a-zA-Z0-9.!#$%&'*+\\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
+
 func main() {
 	var start_time = time.Now()
 	fmt.Printf("Hello Welcome to NR Services : \n")
@@ -116,7 +119,20 @@ func main() {
 		fmt.Scanln(&Emailinp)
 		fmt.Printf("Enter Password: ")
 		fmt.Scanln(&Passwordinp)
+		Emailinp := "test@golangcode.com"
+
+		if isEmailValid(Emailinp) {
+			fmt.Println(Emailinp + " is a valid email")
+			if !isEmailValid("just text") {
+				fmt.Println("not a valid email")
+			}
+		}
 		if Emailinp == student1.Email && Passwordinp == student1.Password {
+
+			// matches := pattern.MatchString(Emailinp)
+			// fmt.Printf("\n recheck mail/Passward")
+			// fmt.Printf("email %v matches the pattern %v", Emailinp, matches)
+			// fmt.Printf("\nEmail: %v :%v\n", Emailinp, emailRegex.MatchString(Emailinp))
 			fmt.Printf("\nSuccessfull Login")
 		} else {
 			fmt.Print("\nError in login. Please try again.")
@@ -138,4 +154,12 @@ func main() {
 
 	elapsed := time.Since(start_time)
 	fmt.Printf("\n%s", elapsed)
+}
+
+func isEmailValid(Emailinp string) bool {
+	if len(Emailinp) < 3 && len(Emailinp) > 254 {
+		return false
+	}
+
+	return emailRegex.MatchString(Emailinp)
 }
