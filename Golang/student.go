@@ -147,10 +147,27 @@ func main() {
 		if Emailinp == teacher1.Email && Passwordinp == teacher1.Password {
 			fmt.Printf("\nSuccessfull login\n")
 			TeacherWork()
+			Passwordinp := "nr@123"
+
+			if isEmailValid(Emailinp) && isPasswardValid(Passwordinp) {
+
+				if Emailinp == student1.Email && Passwordinp == student1.Password {
+
+					// matches := pattern.MatchString(Emailinp)
+					// fmt.Printf("\n recheck mail/Passward")
+					// fmt.Printf("email %v matches the pattern %v", Emailinp, matches)
+					// fmt.Printf("\nEmail: %v :%v\n", Emailinp, emailRegex.MatchString(Emailinp))
+					fmt.Printf("\nSuccessfull Login")
+			
 		} else {
 			fmt.Print("\nError in login. Please try again.")
 
 		}
+		} else {
+
+			fmt.Println("not a valid email or passward")
+		}
+
 	} else {
 		fmt.Printf("\nInvalid input.Please enter either 1 or 2")
 	}
