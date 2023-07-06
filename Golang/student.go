@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"regexp"
 	"time"
+	"Golang/Golang/myPackage"
 )
 
 type Student struct {
@@ -23,8 +23,7 @@ var SubjectCount []int
 var StudentArray []int
 var StudentPercentArray []int
 var sum_of_marks int
-var emailRegex = regexp.MustCompile("^[a-zA-Z0-9.!#$%&'*+\\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
-var PasswardRegex = regexp.MustCompile("^a-zA-Z0-9.!#$%&*.+$")
+
 
 func TeacherWork() {
 
@@ -112,30 +111,18 @@ func main() {
 	T1["Teacher_login"] = Teacher{"rn@gmail.com", "rn@123"}
 	student1 := S1["Student_login"]
 	teacher1 := T1["Teacher_login"]
-	fmt.Scanln(&logininp)
-
 	if logininp == 1 {
 		fmt.Printf("Enter Email: ")
 		fmt.Scanln(&Emailinp)
 		fmt.Printf("Enter Password: ")
 		fmt.Scanln(&Passwordinp)
-		// Emailinp := "GnR@gmail.com"
-		Passwordinp := "nr@123"
-
-		if isEmailValid(Emailinp) && isPasswardValid(Passwordinp) {
-
+		if myPackage.isEmailValid(Emailinp) && myPackage.isPasswardValid(Passwordinp) {
 			if Emailinp == student1.Email && Passwordinp == student1.Password {
-
-				// matches := pattern.MatchString(Emailinp)
-				// fmt.Printf("\n recheck mail/Passward")
-				// fmt.Printf("email %v matches the pattern %v", Emailinp, matches)
-				// fmt.Printf("\nEmail: %v :%v\n", Emailinp, emailRegex.MatchString(Emailinp))
 				fmt.Printf("\nSuccessfull Login")
 			} else {
 				fmt.Print("\nError in login. Please try again.")
 			}
 		} else {
-
 			fmt.Println("not a valid email or passward")
 		}
 
@@ -144,50 +131,17 @@ func main() {
 		fmt.Scanln(&Emailinp)
 		fmt.Printf("Enter Password: ")
 		fmt.Scanln(&Passwordinp)
-		if Emailinp == teacher1.Email && Passwordinp == teacher1.Password {
-			fmt.Printf("\nSuccessfull login\n")
-			TeacherWork()
-			Passwordinp := "nr@123"
-
-			if isEmailValid(Emailinp) && isPasswardValid(Passwordinp) {
-
-				if Emailinp == student1.Email && Passwordinp == student1.Password {
-
-					// matches := pattern.MatchString(Emailinp)
-					// fmt.Printf("\n recheck mail/Passward")
-					// fmt.Printf("email %v matches the pattern %v", Emailinp, matches)
-					// fmt.Printf("\nEmail: %v :%v\n", Emailinp, emailRegex.MatchString(Emailinp))
-					fmt.Printf("\nSuccessfull Login")
-			
+		if myPackage.isEmailValid(Emailinp) && myPackage.isPasswardValid(Passwordinp) {
+			if Emailinp == teacher1.Email && Passwordinp == teacher1.Password {
+				fmt.Printf("\nSuccessfull login\n")
+				TeacherWork()
+			} else {
+				fmt.Printf("\nInvalid input.Please enter either 1 or 2")
+			}
 		} else {
-			fmt.Print("\nError in login. Please try again.")
-
-		}
-		} else {
-
 			fmt.Println("not a valid email or passward")
 		}
-
-	} else {
-		fmt.Printf("\nInvalid input.Please enter either 1 or 2")
 	}
-
 	elapsed := time.Since(start_time)
 	fmt.Printf("\n%s", elapsed)
-
-}
-
-func isEmailValid(Emailinp string) bool {
-	if len(Emailinp) < 3 && len(Emailinp) > 254 {
-		return false
-	}
-
-	return emailRegex.MatchString(Emailinp)
-}
-func isPasswardValid(Passwordinp string) bool {
-	if len(Passwordinp) < 3 && len(Passwordinp) > 254 {
-		return false
-	}
-
-	return PasswardRegex.MatchString(Passwordinp)
 }
