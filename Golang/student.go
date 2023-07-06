@@ -23,6 +23,8 @@ var SubjectCount []int
 var StudentArray []int
 var StudentPercentArray []int
 var sum_of_marks int
+var emailRegex = regexp.MustCompile("^[a-zA-Z0-9.!#$%&'*+\\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
+var PasswardRegex = regexp.MustCompile("^a-zA-Z0-9.!#$%&*.+$")
 
 func TeacherWork() {
 
@@ -89,8 +91,6 @@ func StudentWork() {
 	}
 }
 
-var emailRegex = regexp.MustCompile("^[a-zA-Z0-9.!#$%&'*+\\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
-
 func main() {
 	var start_time = time.Now()
 	fmt.Printf("Hello Welcome to NR Services : \n")
@@ -119,24 +119,26 @@ func main() {
 		fmt.Scanln(&Emailinp)
 		fmt.Printf("Enter Password: ")
 		fmt.Scanln(&Passwordinp)
-		Emailinp := "test@golangcode.com"
+		// Emailinp := "GnR@gmail.com"
+		Passwordinp := "nr@123"
 
-		if isEmailValid(Emailinp) {
-			fmt.Println(Emailinp + " is a valid email")
-			if !isEmailValid("just text") {
-				fmt.Println("not a valid email")
+		if isEmailValid(Emailinp) && isPasswardValid(Passwordinp) {
+
+			if Emailinp == student1.Email && Passwordinp == student1.Password {
+
+				// matches := pattern.MatchString(Emailinp)
+				// fmt.Printf("\n recheck mail/Passward")
+				// fmt.Printf("email %v matches the pattern %v", Emailinp, matches)
+				// fmt.Printf("\nEmail: %v :%v\n", Emailinp, emailRegex.MatchString(Emailinp))
+				fmt.Printf("\nSuccessfull Login")
+			} else {
+				fmt.Print("\nError in login. Please try again.")
 			}
-		}
-		if Emailinp == student1.Email && Passwordinp == student1.Password {
-
-			// matches := pattern.MatchString(Emailinp)
-			// fmt.Printf("\n recheck mail/Passward")
-			// fmt.Printf("email %v matches the pattern %v", Emailinp, matches)
-			// fmt.Printf("\nEmail: %v :%v\n", Emailinp, emailRegex.MatchString(Emailinp))
-			fmt.Printf("\nSuccessfull Login")
 		} else {
-			fmt.Print("\nError in login. Please try again.")
+
+			fmt.Println("not a valid email or passward")
 		}
+
 	} else if logininp == 2 {
 		fmt.Printf("Enter Email: ")
 		fmt.Scanln(&Emailinp)
@@ -147,6 +149,7 @@ func main() {
 			TeacherWork()
 		} else {
 			fmt.Print("\nError in login. Please try again.")
+
 		}
 	} else {
 		fmt.Printf("\nInvalid input.Please enter either 1 or 2")
@@ -154,6 +157,7 @@ func main() {
 
 	elapsed := time.Since(start_time)
 	fmt.Printf("\n%s", elapsed)
+
 }
 
 func isEmailValid(Emailinp string) bool {
@@ -162,4 +166,11 @@ func isEmailValid(Emailinp string) bool {
 	}
 
 	return emailRegex.MatchString(Emailinp)
+}
+func isPasswardValid(Passwordinp string) bool {
+	if len(Passwordinp) < 3 && len(Passwordinp) > 254 {
+		return false
+	}
+
+	return PasswardRegex.MatchString(Passwordinp)
 }
