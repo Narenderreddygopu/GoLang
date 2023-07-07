@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"time"
-	"./mypackages"
 )
 
 type Student struct {
@@ -95,9 +94,11 @@ func main() {
 	fmt.Printf("Hello Welcome to NR Services : \n")
 	fmt.Printf("1. Login as Student\n")
 	fmt.Printf("2. Login as Teacher\nEnter 1 or 2 as input: ")
+	
 	var logininp int
 	var Emailinp string
 	var Passwordinp string
+	fmt.Scanln(&logininp)
 	// var student1 Student
 	// var teacher1 Teacher
 	// student1.Email = "nr@gmail.com"
@@ -116,7 +117,7 @@ func main() {
 		fmt.Scanln(&Emailinp)
 		fmt.Printf("Enter Password: ")
 		fmt.Scanln(&Passwordinp)
-		if myPackage.isEmailValid(Emailinp) && myPackage.isPasswardValid(Passwordinp) {
+		if IsEmailValid(Emailinp) && IsPasswardValid(Passwordinp) {
 			if Emailinp == student1.Email && Passwordinp == student1.Password {
 				fmt.Printf("\nSuccessfull Login")
 			} else {
@@ -131,7 +132,7 @@ func main() {
 		fmt.Scanln(&Emailinp)
 		fmt.Printf("Enter Password: ")
 		fmt.Scanln(&Passwordinp)
-		if myPackage.isEmailValid(Emailinp) && myPackage.isPasswardValid(Passwordinp) {
+		if IsEmailValid(Emailinp) && IsPasswardValid(Passwordinp) {
 			if Emailinp == teacher1.Email && Passwordinp == teacher1.Password {
 				fmt.Printf("\nSuccessfull login\n")
 				TeacherWork()
