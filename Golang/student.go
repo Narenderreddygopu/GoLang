@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"time"
-	"Golang/Golang/myPackage"
+	"./mypackages"
 )
 
 type Student struct {
